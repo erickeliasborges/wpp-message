@@ -1,0 +1,35 @@
+<div class="main">
+  <mat-toolbar fxLayout="row" color="primary">
+    <button (click)="drawer.toggle()" class="menu-btn" mat-icon-button>
+      <mat-icon class="no-margin">menu</mat-icon>
+    </button>
+    <span class="flex">
+      <b class="d-pad mouse-pointer border-r-med logo-navbar" [routerLink]="['/']"><span>Wpp message</span> </b>
+    </span>
+    <!-- <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="NewsletterExample icon-button with a menu">
+      <mat-icon class="no-margin">more_vert</mat-icon>
+  </button> -->
+    <mat-menu #menu="matMenu">
+      <!-- <button mat-menu-item (click)="sair()">
+          <mat-icon>close</mat-icon>
+          <span fxFlex>Sair do sistema</span>
+      </button> -->
+    </mat-menu>
+  </mat-toolbar>
+
+  <mat-drawer-container #drawerContainer class="main-content">
+    <mat-drawer #drawer [opened]="true" mode="side" class="menu">
+      <mat-nav-list>
+        <mat-list-item [routerLink]="['/wpp-message']">
+          <a matLine class="link" routerLinkActive="link-activated">
+            <mat-icon>message</mat-icon>
+            <span>Mensagens</span>
+          </a>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-drawer>
+    <mat-drawer-content>
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>
+</div>
