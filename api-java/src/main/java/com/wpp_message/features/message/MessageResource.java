@@ -14,7 +14,7 @@ public class MessageResource extends GenericResource<Message, Long, MessageServi
     @POST
     @Path("wpp/send/{id}")
     public Response sendMessageWpp(@PathParam("id") Long id) {
-        getService().sendMessageWpp(id);
+        getService().sendByWpp(id);
         return Response.ok("Mensagem enviada via WhatsApp com sucesso.").build();
     }
 

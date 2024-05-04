@@ -1,6 +1,6 @@
-package com.wpp_message.features.db_setting;
+package com.wpp_message.features.db_config;
 
-import com.wpp_message.features.db_setting.enums.DbSettingType;
+import com.wpp_message.features.db_config.enums.DbConfigType;
 import com.wpp_message.generic.crud.EntityId;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -9,18 +9,18 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@Table(name = "db_settings", schema = "public")
+@Table(name = "db_config", schema = "public")
 @Entity
-public class DbSetting implements EntityId<Long> {
+public class DbConfig implements EntityId<Long> {
 
     @Id
-    @SequenceGenerator(name = "db_settings_id_sequence", sequenceName = "db_settings_id_sequence", allocationSize = 1, initialValue = 1)
-    @GeneratedValue(generator = "db_settings_id_sequence")
+    @SequenceGenerator(name = "db_config_id_sequence", sequenceName = "db_config_id_sequence", allocationSize = 1, initialValue = 1)
+    @GeneratedValue(generator = "db_config_id_sequence")
     private Long id;
 
     @NotNull
     @Enumerated(EnumType.ORDINAL)
-    private DbSettingType type;
+    private DbConfigType type;
 
     @NotNull
     private String host;

@@ -1,16 +1,16 @@
-package com.wpp_message.features.db_setting.connection;
+package com.wpp_message.features.db_config.connection;
 
-import com.wpp_message.features.db_setting.enums.DbSettingType;
+import com.wpp_message.features.db_config.enums.DbConfigType;
 
 public class DbConnectionBuilder {
 
-    private final DbSettingType type;
+    private final DbConfigType type;
 
-    public DbConnectionBuilder(DbSettingType type) {
+    public DbConnectionBuilder(DbConfigType type) {
         this.type = type;
     }
 
-    public static DbConnectionBuilder type(DbSettingType type) {
+    public static DbConnectionBuilder type(DbConfigType type) {
         return new DbConnectionBuilder(type);
     }
 

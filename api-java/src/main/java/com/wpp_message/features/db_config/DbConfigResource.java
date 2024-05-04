@@ -1,4 +1,4 @@
-package com.wpp_message.features.db_setting;
+package com.wpp_message.features.db_config;
 
 import com.wpp_message.generic.crud.GenericResource;
 import jakarta.enterprise.context.RequestScoped;
@@ -9,13 +9,13 @@ import jakarta.ws.rs.core.Response;
 import java.sql.SQLException;
 
 @RequestScoped
-@Path("db-setting")
-public class DbSettingResource extends GenericResource<DbSetting, Long, DbSettingService> {
+@Path("db-config")
+public class DbConfigResource extends GenericResource<DbConfig, Long, DbConfigService> {
 
     @POST
     @Path("connection/test")
-    public Response connectionTest(DbSetting dbSetting) throws SQLException {
-        if (getService().isConnectionTestOk(dbSetting)) {
+    public Response connectionTest(DbConfig dbConfig) throws SQLException {
+        if (getService().isConnectionTestOk(dbConfig)) {
             return Response.ok("Conectado com sucesso.").build();
         }
         return Response.status(Response.Status.BAD_REQUEST)

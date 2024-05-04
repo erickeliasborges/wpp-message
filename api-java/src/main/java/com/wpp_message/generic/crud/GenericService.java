@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Getter
-public abstract class GenericService<T, ID, R extends GenericRepository> {
+public abstract class GenericService<T extends EntityId<ID>, ID, R extends GenericRepository> {
 
 //    @Inject TODO: Ainda não implementado
 //    AuthSecurityFilter authSecurityFilter;

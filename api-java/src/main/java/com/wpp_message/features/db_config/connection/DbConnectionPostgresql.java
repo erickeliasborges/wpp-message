@@ -1,7 +1,7 @@
-package com.wpp_message.features.db_setting.connection;
+package com.wpp_message.features.db_config.connection;
 
 import com.wpp_message.exception.db_connection.DbConnectionException;
-import com.wpp_message.features.db_setting.DbSetting;
+import com.wpp_message.features.db_config.DbConfig;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,14 +11,14 @@ import java.util.Optional;
 public class DbConnectionPostgresql implements DbConnection {
 
     @Override
-    public Optional<Connection> connect(DbSetting dbSetting) {
+    public Optional<Connection> connect(DbConfig dbConfig) {
         Connection connection;
-        String driverUrl = getDriverUrl(dbSetting);
+        String driverUrl = getDriverUrl(dbConfig);
         try {
             connection = DriverManager.getConnection(
                     driverUrl,
-                    dbSetting.getUsername(),
-                    dbSetting.getPassword()
+                    dbConfig.getUsername(),
+                    dbConfig.getPassword()
             );
             return Optional.of(connection);
         } catch (SQLException e) {
@@ -31,9 +31,9 @@ public class DbConnectionPostgresql implements DbConnection {
         }
     }
 
-    private String getDriverUrl(DbSetting dbSetting) {
+    private String getDriverUrl(DbConfig dbConfig) {
         return "jdbc:postgresql://" +
-                dbSetting.getHost() + ":" + dbSetting.getPort() + "/" + dbSetting.getName() +
+                dbConfig.getHost() + ":" + dbConfig.getPort() + "/" + dbConfig.getName() +
                 "?ApplicationName="+ getApplicationName();
     }
 
