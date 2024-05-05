@@ -1,9 +1,9 @@
 package com.wpp_message.features.wpp.connect_api;
 
+import com.wpp_message.features.wpp.connect_api.auth.WppConnectAPIAuthServiceHandle;
+import com.wpp_message.features.wpp.connect_api.auth.WppConnectAPITokenResponse;
 import com.wpp_message.features.wpp.connect_api.requests.WppAPISendMessageRequest;
 import jakarta.enterprise.context.RequestScoped;
-import jakarta.ws.rs.WebApplicationException;
-import lombok.SneakyThrows;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 @RequestScoped
@@ -12,16 +12,24 @@ public class WppConnectAPIServiceHandle {
     @RestClient
     WppConnectAPIService wppConnectAPIService;
 
-    @SneakyThrows // TODO: Tratar exceções depois
+    private final WppConnectAPIAuthServiceHandle wppConnectAPIAuthServiceHandle;
+
+    public WppConnectAPIServiceHandle(
+            WppConnectAPIAuthServiceHandle wppConnectAPIAuthServiceHandle
+    ) {
+        this.wppConnectAPIAuthServiceHandle = wppConnectAPIAuthServiceHandle;
+    }
+
     public void send(WppAPISendMessageRequest request) {
-        try {
+        WppConnectAPITokenResponse token = wppConnectAPIAuthServiceHandle.getToken();
+//        try {
             wppConnectAPIService.sendMessage(
                     request,
-                    "$2b$10$jZhkxXqy6S8Ulo_Ni_iCkO6.hzAbuvxRVKoO3FiYE6Wke2KKd2f.m"
+                    token.getToken()
             );
-        } catch (WebApplicationException exception) {
-            exception.getResponse().readEntity(String.class); // pegar retorno
-        }
+//        } catch (WebApplicationException exception) {
+//            exception.getResponse().readEntity(String.class); // pegar retorno
+//        }
 
 //        HttpClient client = HttpClient.newBuilder()
 //                .version(HttpClient.Version.HTTP_1_1)

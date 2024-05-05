@@ -41,12 +41,11 @@ public abstract class GenericOneConfigService<T extends EntityId<ID>, ID, R exte
 
     private void validateOnlyOneConfig(T entity) {
         List<T> list = findAll();
-        T existingEntity = list.get(0);
-        if (!list.isEmpty() && !Objects.equals(existingEntity.getId(), entity.getId())) {
+        if (!list.isEmpty() && !Objects.equals(list.get(0).getId(), entity.getId())) {
             throw new ValidationException(
                     "Não é possível incluir mais de uma configuração. " +
                             "Por favor, atualize a existente (id %d)."
-                                    .formatted(existingEntity.getId())
+                                    .formatted(list.get(0).getId())
             );
         }
     }
