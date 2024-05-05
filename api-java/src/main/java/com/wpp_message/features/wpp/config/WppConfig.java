@@ -1,4 +1,4 @@
-package com.wpp_message.features.wpp_config;
+package com.wpp_message.features.wpp.config;
 
 import com.wpp_message.generic.crud.EntityId;
 import jakarta.persistence.*;

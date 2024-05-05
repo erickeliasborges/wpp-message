@@ -28,3 +28,6 @@ quarkus:
       public_schema: public
   hibernate-validator:
     method-validation: none
+  rest-client:
+    wppconnect-api:
+      url: http://localhost:21465/api

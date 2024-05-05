@@ -20,7 +20,10 @@ public class MessageService extends GenericService<Message, Long, MessageReposit
     private final DbConfigService dbConfigService;
     private final WppMessageService wppMessageService;
 
-    public MessageService(DbConfigService dbConfigService, WppMessageService wppMessageService) {
+    public MessageService(
+            DbConfigService dbConfigService,
+            WppMessageService wppMessageService
+    ) {
         this.dbConfigService = dbConfigService;
         this.wppMessageService = wppMessageService;
     }

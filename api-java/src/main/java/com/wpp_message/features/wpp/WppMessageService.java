@@ -1,38 +1,35 @@
 package com.wpp_message.features.wpp;
 
+import com.wpp_message.features.wpp.connect_api.WppConnectAPIServiceHandle;
+import com.wpp_message.features.wpp.connect_api.requests.WppAPISendMessageRequest;
 import jakarta.enterprise.context.RequestScoped;
-import lombok.SneakyThrows;
 
-import java.net.URI;
-import java.net.http.HttpClient;
-import java.net.http.HttpRequest;
-import java.net.http.HttpResponse;
-
+/**
+ * Classe que implementa a interface com os métodos para enviar mensagem via wpp,
+ * a ideia dessa classe é não receber parâmetros específicos de uma API, a ideia é
+ * receber parâmetros puros, assim se um dia precisar mudar para outra API
+ * de envio de mensagem, não precisa mudar nas regras de negócio onde chama essa classe
+ */
 @RequestScoped
-public class WppMessageService {
+public class WppMessageService implements WppMessage {
 
-    @SneakyThrows // TODO: Tratar exceções depois
+    private final WppConnectAPIServiceHandle wppConnectAPIServiceHandle;
+
+    public WppMessageService(
+            WppConnectAPIServiceHandle wppConnectAPIServiceHandle
+    ) {
+        this.wppConnectAPIServiceHandle = wppConnectAPIServiceHandle;
+    }
+
+    @Override
     public void send(String phone, String message) {
-        HttpClient client = HttpClient.newBuilder()
-                .version(HttpClient.Version.HTTP_1_1)
-                .build();
-        String url = "http://localhost:21465/api/wppmessage/send-message";
-        String jsonPayload = """
-        {
-            "phone": "%s",
-            "message": "%s",
-            "isGroup": false
-        }
-        """.formatted(phone, message);
-        HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
-                .header("Content-Type", "application/json")
-                .header("Authorization", "Bearer $2b$10$uBl7fSdLqmWTdkydEZqRQOdP_mh1oQ171xyM6j.hUirH9QGndNPua")
-                .POST(HttpRequest.BodyPublishers.ofString(jsonPayload))
-                .build();
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println("Response status code: " + response.statusCode());
-        System.out.println("Response body: " + response.body());
+        wppConnectAPIServiceHandle.send(
+                WppAPISendMessageRequest.builder()
+                        .phone(phone)
+                        .message(message)
+                        .isGroup(false)
+                        .build()
+        );
     }
 
 }
