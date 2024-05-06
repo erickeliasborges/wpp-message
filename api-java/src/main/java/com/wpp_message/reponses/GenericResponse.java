@@ -14,14 +14,14 @@ public class GenericResponse {
     private String errorId;
     private String message;
     private String error;
-    private Integer status;
+    private Integer httpStatus;
 
     public static GenericResponse getGenericResponse(String errorId, String message, String error, Integer status) {
         return GenericResponse.builder()
                 .errorId(errorId)
                 .message(message)
                 .error(error)
-                .status(status)
+                .httpStatus(status)
                 .build();
     }
 
@@ -29,14 +29,14 @@ public class GenericResponse {
         return GenericResponse.builder()
                 .message(message)
                 .error(error)
-                .status(status)
+                .httpStatus(status)
                 .build();
     }
 
     public static GenericResponse getGenericResponse(String message, Integer status) {
         return GenericResponse.builder()
                 .message(message)
-                .status(status)
+                .httpStatus(status)
                 .build();
     }
 

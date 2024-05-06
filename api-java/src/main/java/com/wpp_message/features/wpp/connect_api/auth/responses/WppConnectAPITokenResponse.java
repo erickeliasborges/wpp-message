@@ -1,4 +1,4 @@
-package com.wpp_message.features.wpp.connect_api.auth;
+package com.wpp_message.features.wpp.connect_api.auth.responses;
 
 import lombok.Getter;
 import lombok.Setter;
