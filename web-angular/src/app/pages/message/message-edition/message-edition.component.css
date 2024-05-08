@@ -1,13 +1,4 @@
-.full-width {
-  height: 100%;
-}
-
-.d-flex-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.div-message {
+.div-textarea {
   margin-top: 15px;
   height: 44%;
   display: flex;
@@ -15,13 +6,13 @@
   overflow-y: auto;
 }
 
-.mat-form-field-message {
+.mat-form-field {
   flex: 1; /* permite que o mat-form-field ocupe todo o espaço disponível */
   width: 100%;
   display: flex;
 }
 
-.textarea-message {
+.textarea {
   resize: none; /* desabilita o redimensionamento manual */
   height: 80%; /* define a altura do textarea como uma altura fixa */
   max-height: 80%; /* define a altura máxima do textarea como a mesma altura fixa */

@@ -14,6 +14,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatChipsModule } from '@angular/material/chips';
+import { MaterialPaginatorModule } from 'src/app/modules/material/material-paginator.module';
 
 @NgModule({
     imports: [
@@ -32,6 +33,7 @@ import { MatChipsModule } from '@angular/material/chips';
         MatAutocompleteModule,
         MatSlideToggleModule,
         MatChipsModule,
+        MaterialPaginatorModule,
     ],
     exports: [
         MatToolbarModule,
@@ -49,6 +51,7 @@ import { MatChipsModule } from '@angular/material/chips';
         MatAutocompleteModule,
         MatSlideToggleModule,
         MatChipsModule,
+        MaterialPaginatorModule,
     ],
 })
 export class MaterialModule {

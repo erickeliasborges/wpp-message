@@ -1,0 +1,14 @@
+<button mat-button (click)='voltarClick()'>Voltar</button>
+<app-crud-footer>
+  <div>
+    <!-- <div class="flex-1">
+            <ng-content select='.controles'></ng-content>
+        </div> -->
+    <button mat-stroked-button (click)='novoClick()'>Novo</button>
+    <button mat-button (click)='cancelarClick()'>Cancelar</button>
+    <button mat-button class="mat-button-warn" (click)='excluirClick()'>Excluir
+      <!-- [disabled]="!crudController.buttonsConfig.habilitarExcluir"> -->
+    </button>
+    <button mat-button class="mat-button-sucess" (click)='salvarClick()'>Gravar</button>
+  </div>
+</app-crud-footer>

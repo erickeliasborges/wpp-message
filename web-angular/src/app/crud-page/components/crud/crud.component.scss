@@ -1,0 +1,29 @@
+:host {
+  display: block;
+  height: calc(100vh);
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.footer {
+  padding: var(--space-med);
+  background-color: var(--surface-color);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+
+  .actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: var(--space-med);
+  }
+}
