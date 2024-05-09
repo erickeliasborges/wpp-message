@@ -8,7 +8,7 @@ import { Message } from 'src/app/pages/message/models/message';
 @Component({
   selector: 'app-message-edition',
   templateUrl: './message-edition.component.html',
-  styleUrls: ['./message-edition.component.css'],
+  styleUrls: ['./message-edition.component.scss'],
   providers: [
     {
 			provide: CRUD_FORM,

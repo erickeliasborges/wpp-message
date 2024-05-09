@@ -1,6 +1,11 @@
 :host {
   display: block;
-  height: calc(100vh);
+  /* Desconta o tamanho da (toolbar 70 + margin-top 10), pois o vh calcula usando o height da viewport do browser todo,
+  no saúde funciona sem o desconto pois é usado um iframe pra cada aba,
+  e dentro da aba não tem toolbar nem nada. Quando é usado dentro de um iframe,
+  o vh calcula usando a viewport do iframe. */
+  height: calc(100vh - 80px);
+  margin-top: 10px;
 }
 
 .container {
@@ -11,12 +16,13 @@
 
 .content {
   flex: 1 1 auto;
-  overflow: hidden;
+  // overflow: hidden;
+  overflow: auto;
 }
 
 .footer {
   padding: var(--space-med);
-  background-color: var(--surface-color);
+  // background-color: var(--white-color);
   border-top: 1px solid var(--border-color);
   display: flex;
   justify-content: space-between;

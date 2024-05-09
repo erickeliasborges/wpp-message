@@ -7,6 +7,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from 'src/app/modules/material/material.module';
 import { CrudPageModule } from 'src/app/crud-page/crud-page.module';
 import { MessageService } from 'src/app/pages/message/message.service';
+import { GenericDirectivesModule } from 'src/app/generic-directives/generic-directives.module';
 
 const routes: Routes = [
   { path: '', redirectTo: 'search', pathMatch: 'full' },
@@ -19,6 +20,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     MaterialModule,
     CrudPageModule,
+    GenericDirectivesModule,
   ],
   declarations: [
     MessagePage,

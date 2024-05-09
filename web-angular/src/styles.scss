@@ -1,10 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import "assets/scss/variables.scss";
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-.full-width {
+.full-height {
   height: 100%;
+}
+
+.half-height {
+  height: 50%;
 }
 
 .d-flex-column {

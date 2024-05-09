@@ -1,28 +1,21 @@
-<div class="full-width d-flex-column">
-  <form [formGroup]="form">
-    <div>
-      <mat-form-field class="mat-form-field">
-        <mat-label>Título</mat-label>
-        <input matInput formControlName="title" type="text" placeholder="Informe o título da mensagem">
-        <!-- <mat-error>{{nome.errors | erro}}</mat-error> -->
-      </mat-form-field>
-    </div>
+<form [formGroup]="form" class="full-height d-flex-column">
+  <div>
+    <mat-form-field class="mat-form-field">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="title" type="text" placeholder="Informe o título da mensagem">
+      <!-- <mat-error>{{nome.errors | erro}}</mat-error> -->
+    </mat-form-field>
+  </div>
 
-    <div class="div-textarea">
-      <mat-form-field class="mat-form-field">
-        <mat-label>SQL</mat-label>
-        <textarea formControlName="sql" class="textarea" placeholder="Informe o SQL..." matInput cdkTextareaAutosize
-          #autosize="cdkTextareaAutosize"></textarea>
-      </mat-form-field>
-    </div>
+  <div class="full-height">
+    <mat-form-field class="mat-form-field half-height" dynamicTextAreaMaxHeightByFormField>
+      <mat-label>SQL</mat-label>
+      <textarea formControlName="sql" placeholder="Informe o SQL..." matInput cdkTextareaAutosize></textarea>
+    </mat-form-field>
 
-    <div class="div-textarea">
-      <mat-form-field class="mat-form-field">
-        <mat-label>Mensagem</mat-label>
-        <!-- <textarea matInput placeholder="Informe a mensagem.." style="resize: none"></textarea> -->
-        <textarea formControlName="message" class="textarea" placeholder="Informe a mensagem..." matInput cdkTextareaAutosize
-          #autosize="cdkTextareaAutosize"></textarea>
-      </mat-form-field>
-    </div>
-  </form>
-</div>
+    <mat-form-field class="mat-form-field half-height" dynamicTextAreaMaxHeightByFormField>
+      <mat-label>Mensagem</mat-label>
+      <textarea formControlName="message" placeholder="Informe a mensagem..." matInput cdkTextareaAutosize></textarea>
+    </mat-form-field>
+  </div>
+</form>
