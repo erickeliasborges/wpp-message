@@ -10,7 +10,7 @@ import { MessageService } from 'src/app/pages/message/message.service';
 @Component({
   selector: 'app-message-search',
   templateUrl: './message-search.component.html',
-  styleUrls: ['./message-search.component.css'],
+  styleUrls: ['./message-search.component.scss'],
   providers: [
     { provide: GENERIC_SEARCH, useExisting: MessageSearchComponent },
   ]
@@ -56,10 +56,6 @@ export class MessageSearchComponent implements SearchFactory<Message, number> {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-  }
-
-  public newRecord() {
-    this.newEvent.emit();
   }
 
   public onEdit(id: number) {

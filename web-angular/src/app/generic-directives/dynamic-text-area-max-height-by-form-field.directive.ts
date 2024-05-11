@@ -1,20 +1,15 @@
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directive, DoCheck, ElementRef, Input } from '@angular/core';
 
 @Directive({
   selector: '[dynamicTextAreaMaxHeightByFormField]'
 })
-export class DynamicTextAreaMaxHeightByFormFieldDirective {
-
-  constructor(private el: ElementRef) { }
+export class DynamicTextAreaMaxHeightByFormFieldDirective implements DoCheck {
 
   @Input() adjustmentFactor: number = 0.75;
 
-  ngAfterViewInit() {
-    this.adjustTextAreaMaxHeight();
-  }
+  constructor(private el: ElementRef) { }
 
-  @HostListener('window:resize')
-  onWindowResize() {
+  ngDoCheck() {
     this.adjustTextAreaMaxHeight();
   }
 
@@ -24,7 +19,7 @@ export class DynamicTextAreaMaxHeightByFormFieldDirective {
       const parentHeight = parent.offsetHeight;
       const adjustedHeight = parentHeight * this.adjustmentFactor;
       const textArea = this.el.nativeElement.querySelector('textarea');
-      if (textArea) {
+      if (textArea && (adjustedHeight > 0)) {
         textArea.style.maxHeight = `${adjustedHeight}px`;
       }
     }
