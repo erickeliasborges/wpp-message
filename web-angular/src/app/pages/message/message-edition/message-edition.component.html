@@ -3,7 +3,7 @@
     <mat-form-field class="mat-form-field">
       <mat-label>Título</mat-label>
       <input matInput formControlName="title" type="text" placeholder="Informe o título da mensagem">
-      <!-- <mat-error>{{nome.errors | erro}}</mat-error> -->
+      <mat-error>{{title.errors | erro}}</mat-error>
     </mat-form-field>
   </div>
 
@@ -11,11 +11,13 @@
     <mat-form-field class="mat-form-field half-height" dynamicTextAreaMaxHeightByFormField>
       <mat-label>SQL</mat-label>
       <textarea formControlName="sql" placeholder="Informe o SQL..." matInput cdkTextareaAutosize></textarea>
+      <mat-error>{{sql.errors | erro}}</mat-error>
     </mat-form-field>
 
     <mat-form-field class="mat-form-field half-height" dynamicTextAreaMaxHeightByFormField>
       <mat-label>Mensagem</mat-label>
       <textarea formControlName="message" placeholder="Informe a mensagem..." matInput cdkTextareaAutosize></textarea>
+      <mat-error>{{message.errors | erro}}</mat-error>
     </mat-form-field>
   </div>
 </form>

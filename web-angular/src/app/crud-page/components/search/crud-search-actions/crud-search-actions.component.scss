@@ -3,3 +3,8 @@
     flex: 1 1 auto;
     gap: var(--space-med);
 }
+
+.new-button {
+  background-color: var(--mat-primary-color);
+  color: var(--white-color);
+}

@@ -28,13 +28,13 @@ public abstract class GenericOneConfigService<T extends EntityId<ID>, ID, R exte
     }
 
     @Override
-    public GenericResponse save(T entity) {
+    public T save(T entity) {
         validateOnlyOneConfig(entity);
         return super.save(entity);
     }
 
     @Override
-    public GenericResponse update(T entity) {
+    public T update(T entity) {
         validateOnlyOneConfig(entity);
         return super.update(entity);
     }

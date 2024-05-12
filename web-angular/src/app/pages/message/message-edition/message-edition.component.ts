@@ -1,6 +1,6 @@
 import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { Component, NgZone, ViewChild, forwardRef } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { take } from 'rxjs';
 import { CRUD_FORM, FormFactory } from 'src/app/crud-page/interfaces/form-factory';
 import { Message } from 'src/app/pages/message/models/message';
@@ -48,11 +48,27 @@ export class MessageEditionComponent implements FormFactory<Message> {
   }
 
   validate(): boolean {
-    return this.form.valid;
+    if (!this.form.valid) {
+      this.form.markAllAsTouched();
+      return false;
+    }
+    return true;
   }
 
   isDirty(): boolean {
     return this.form.dirty;
+  }
+
+  public get title(): AbstractControl {
+    return this.form.get('title')!;
+  }
+
+  public get sql(): AbstractControl {
+    return this.form.get('sql')!;
+  }
+
+  public get message(): AbstractControl {
+    return this.form.get('message')!;
   }
 
 }

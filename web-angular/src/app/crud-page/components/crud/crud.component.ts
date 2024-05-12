@@ -23,10 +23,15 @@ export class CrudComponent implements CrudFactory<any> {
     private apiService: CrudAPIService<any>,
   ) { }
 
+  private clearRecord(): void {
+    this.record = { id: null };
+  }
+
   newObj(args: any): Observable<any> {
     return new Observable(observer => {
       this.apiService.new(args).subscribe({
         next: (value) => {
+          this.clearRecord();
           this.form.updateForm(value);
           observer.next(value);
           observer.complete();
@@ -51,6 +56,7 @@ export class CrudComponent implements CrudFactory<any> {
     return new Observable(observer => {
       this.apiService.create(this.record).subscribe({
         next: (value) => {
+          this.record = value;
           observer.next(value);
           observer.complete();
           this.createEvent.emit(value);
@@ -67,10 +73,10 @@ export class CrudComponent implements CrudFactory<any> {
     return new Observable(observer => {
       this.apiService.findById(id).subscribe({
         next: (value) => {
+          this.record = value;
           observer.next(value);
           observer.complete();
           this.form.updateForm(value);
-          this.record = value;
           this.readEvent.emit(value);
         },
         error: (error) => {
@@ -92,6 +98,7 @@ export class CrudComponent implements CrudFactory<any> {
     return new Observable(observer => {
       this.apiService.update(this.record).subscribe({
         next: (value) => {
+          this.record = value;
           observer.next(value);
           observer.complete();
           this.updateEvent.emit(value);
@@ -108,6 +115,7 @@ export class CrudComponent implements CrudFactory<any> {
     return new Observable(observer => {
       this.apiService.delete(this.record.id).subscribe({
         next: (value) => {
+          this.clearRecord();
           observer.next(value);
           observer.complete();
           this.deleteEvent.emit(value);

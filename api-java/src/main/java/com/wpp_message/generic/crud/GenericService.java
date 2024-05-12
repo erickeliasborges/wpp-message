@@ -42,18 +42,18 @@ public abstract class GenericService<T extends EntityId<ID>, ID, R extends Gener
         return optional.get();
     }
 
-    public GenericResponse save(T entity) {
+    public T save(T entity) {
         setDefaultValuesWhenNew(entity);
         repository.save(entity);
-        return GenericResponse.getGenericResponse("Registro(s) incluído(s) com sucesso.", Response.Status.CREATED.getStatusCode());
+        return entity;
     }
 
     public void setDefaultValuesWhenNew(T entity) {
     }
 
-    public GenericResponse update(T entity) {
+    public T update(T entity) {
         repository.save(entity);
-        return GenericResponse.getGenericResponse("Registro(s) atualizado(s) com sucesso.", Response.Status.OK.getStatusCode());
+        return entity;
     }
 
     public GenericResponse deleteById(ID id) {

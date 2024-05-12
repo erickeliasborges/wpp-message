@@ -32,8 +32,8 @@ export abstract class CrudAPIService<T> {
    * @returns Void
    * @param record Registro da inclusão
    */
-  public create(record: T): Observable<any> {
-    return this.http.post<any>(`${this.fullUrl}`, record);
+  public create(record: T): Observable<T> {
+    return this.http.post<T>(`${this.fullUrl}`, record);
   }
 
   /**
@@ -41,8 +41,8 @@ export abstract class CrudAPIService<T> {
    * @returns Void
    * @param record Registro da atualização
    */
-  public update(record: T): Observable<void> {
-    return this.http.put<void>(`${this.fullUrl}`, record);
+  public update(record: T): Observable<T> {
+    return this.http.put<T>(`${this.fullUrl}`, record);
   }
 
   /**

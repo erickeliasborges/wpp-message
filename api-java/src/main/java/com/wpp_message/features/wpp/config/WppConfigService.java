@@ -22,13 +22,13 @@ public class WppConfigService extends GenericOneConfigService<WppConfig, Long, W
     }
 
     @Override
-    public GenericResponse save(WppConfig entity) {
+    public WppConfig save(WppConfig entity) {
         wppConnectAPIAuthServiceHandle.clearToken();
         return super.save(entity);
     }
 
     @Override
-    public GenericResponse update(WppConfig entity) {
+    public WppConfig update(WppConfig entity) {
         wppConnectAPIAuthServiceHandle.clearToken();
         return super.update(entity);
     }

@@ -21,3 +21,31 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .gap-10 {
   gap: 10px;
 }
+
+.text-align-end {
+  text-align: end;
+}
+
+.success-snackbar {
+  .mdc-snackbar__surface{
+    background-color: var(--success-color) !important;
+    color: white!important;
+  }
+  .mat-mdc-snack-bar-actions{
+    button{
+      color: white!important;
+    }
+  }
+}
+
+.error-snackbar {
+  .mdc-snackbar__surface{
+    background-color: var(--error-color) !important;
+    color: white!important;
+  }
+  .mat-mdc-snack-bar-actions{
+    button{
+      color: white!important;
+    }
+  }
+}

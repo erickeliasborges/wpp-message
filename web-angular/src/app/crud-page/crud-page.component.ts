@@ -37,8 +37,8 @@ export class CrudPageComponent implements OnDestroy, AfterContentInit {
   }
 
   private registerCrudEvents() {
-    this.crud.createEvent.subscribe(this.refreshSearch.bind(this));
-    this.crud.updateEvent.subscribe(this.refreshSearch.bind(this));
+    this.subscription.add(this.crud.createEvent.subscribe(this.refreshSearch.bind(this)));
+    this.subscription.add(this.crud.updateEvent.subscribe(this.refreshSearch.bind(this)));
   }
 
   private refreshSearch() {

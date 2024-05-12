@@ -43,8 +43,8 @@ public abstract class GenericResource<
 
     @PUT
     @Transactional
-    public GenericResponse update(@Valid T entity) {
-        return service.update(entity);
+    public Response update(@Valid T entity) {
+        return Response.ok(service.update(entity)).build();
     }
 
     @DELETE
