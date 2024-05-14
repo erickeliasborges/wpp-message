@@ -1,5 +1,11 @@
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Injectable } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { errorTransform } from 'src/app/pipes/error-transform';
+
+export interface OptionsMessage {
+  type: 'success' | 'error';
+}
 
 @Injectable({
   providedIn: 'root'
@@ -9,14 +15,14 @@ export class MessageService {
   private defaultConfig: MatSnackBarConfig = {
     horizontalPosition: 'end',
     verticalPosition: 'top',
-    duration: 50000,
+    duration: 5000,
   };
 
   constructor(
     private snackBar: MatSnackBar,
   ) { }
 
-  public showMessage(message: string, options?: { type: 'success' | 'error' }) {
+  public showMessage(message: string, options?: OptionsMessage) {
     switch (options?.type) {
       case 'success': {
         this.snackBar.open(message, 'OK', { ...this.defaultConfig, panelClass: 'success-snackbar' });
@@ -31,6 +37,10 @@ export class MessageService {
         return;
       }
     }
+  }
+
+  public showHttpErrorMessage(title: string, error: HttpErrorResponse) {
+    this.showMessage(`${title}: ${errorTransform(error)}`, { type: 'error' });
   }
 
 }

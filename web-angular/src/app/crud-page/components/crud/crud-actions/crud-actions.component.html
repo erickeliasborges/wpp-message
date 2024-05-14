@@ -1,14 +1,10 @@
-<button mat-button (click)='voltarClick()'>Voltar</button>
+<button mat-button (click)='onBackClick()'>Voltar</button>
 <app-crud-footer>
   <div>
-    <!-- <div class="flex-1">
-            <ng-content select='.controles'></ng-content>
-        </div> -->
-    <button mat-button (click)='novoClick()'>Novo</button>
-    <button mat-button (click)='cancelarClick()'>Cancelar</button>
-    <button mat-button class="mat-button-warn" (click)='excluirClick()' [disabled]="!crud.record?.id">Excluir
-      <!-- [disabled]="!crudController.buttonsConfig.habilitarExcluir"> -->
-    </button>
-    <button mat-button class="mat-button-sucess" (click)='salvarClick()'>Gravar</button>
+    <ng-content select='.left-controls'></ng-content>
+    <button mat-button (click)='onNewClick()'>Novo</button>
+    <button mat-button (click)='onCancelClick()'>Cancelar</button>
+    <button mat-button class="mat-button-warn" (click)='onDeleteClick()' [disabled]="!crud.record?.id">Excluir</button>
+    <button mat-button class="mat-button-sucess" (click)='onSaveClick()'>Gravar</button>
   </div>
 </app-crud-footer>

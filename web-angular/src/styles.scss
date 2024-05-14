@@ -13,6 +13,14 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   height: 50%;
 }
 
+.full-width {
+  width: 100%;
+}
+
+.half-width {
+  width: 50%;
+}
+
 .d-flex-column {
   display: flex;
   flex-direction: column;
@@ -48,4 +56,12 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
       color: white!important;
     }
   }
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
 }

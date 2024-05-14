@@ -1,16 +1,18 @@
 <app-crud-page>
   <div class="edition">
     <app-crud>
-        <!-- <app-crud-container> -->
-            <app-message-edition></app-message-edition>
-        <!-- </app-crud-container> -->
-        <app-crud-actions></app-crud-actions>
+      <!-- <app-crud-container> -->
+      <app-message-edition></app-message-edition>
+      <!-- </app-crud-container> -->
+      <app-crud-actions [createAndNew]="true">
+        <button class="left-controls" mat-button (click)="onSendMessageClick()" [disabled]="!crudComponent.record.id">Enviar</button>
+      </app-crud-actions>
     </app-crud>
-</div>
-<div class="search">
-  <app-crud-search>
-    <app-message-search></app-message-search>
-    <app-crud-search-actions></app-crud-search-actions>
-  </app-crud-search>
-</div>
+  </div>
+  <div class="search">
+    <app-crud-search>
+      <app-message-search></app-message-search>
+      <app-crud-search-actions></app-crud-search-actions>
+    </app-crud-search>
+  </div>
 </app-crud-page>

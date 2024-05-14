@@ -75,15 +75,32 @@ export class CrudPageComponent implements OnDestroy, AfterContentInit {
   }
 
   public navigateToSearch() {
-    this.router.navigate(['../search'], { relativeTo: this.activatedRoute });
+    let route = 'search';
+    this.router.navigate([`../${route}`], { relativeTo: this.activatedRoute }).then((value) => {
+      const forceActionIfSameRoute = !value;
+      if (forceActionIfSameRoute) {
+        this.setAction(route);
+      }
+    });
   }
 
   public navigateToNew(params: any) {
-    this.router.navigate(['../new'], { relativeTo: this.activatedRoute, queryParams: params });
+    let route = 'new';
+    this.router.navigate([`../${route}`], { relativeTo: this.activatedRoute, queryParams: params }).then((value) => {
+      const forceActionIfSameRoute = !value;
+      if (forceActionIfSameRoute) {
+        this.setAction(route);
+      }
+    });
   }
 
   public navigateToEdition(id: any) {
-    this.router.navigate([`../${id}`], { relativeTo: this.activatedRoute });
+    this.router.navigate([`../${id}`], { relativeTo: this.activatedRoute }).then((value) => {
+      const forceActionIfSameRoute = !value;
+      if (forceActionIfSameRoute) {
+        this.setAction(id);
+      }
+    });
   }
 
   ngOnDestroy(): void {

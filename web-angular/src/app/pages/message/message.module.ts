@@ -6,7 +6,7 @@ import { MessageEditionComponent } from 'src/app/pages/message/message-edition/m
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from 'src/app/modules/material/material.module';
 import { CrudPageModule } from 'src/app/crud-page/crud-page.module';
-import { MessageService } from 'src/app/pages/message/message.service';
+import { MessageApiService } from 'src/app/pages/message/message-api.service';
 import { GenericDirectivesModule } from 'src/app/generic-directives/generic-directives.module';
 
 const routes: Routes = [
@@ -28,7 +28,7 @@ const routes: Routes = [
     MessageEditionComponent,
   ],
   providers: [
-    MessageService,
+    MessageApiService,
   ]
 })
 export class MessageModule { }

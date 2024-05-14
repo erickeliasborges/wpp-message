@@ -5,7 +5,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { SearchFactory } from 'src/app/crud-page/interfaces/crud-pesquisa';
 import { Message } from 'src/app/pages/message/models/message';
 import { GENERIC_SEARCH } from '../../../crud-page/interfaces/crud-pesquisa';
-import { MessageService } from 'src/app/pages/message/message.service';
+import { MessageApiService } from 'src/app/pages/message/message-api.service';
 
 @Component({
   selector: 'app-message-search',
@@ -27,7 +27,7 @@ export class MessageSearchComponent implements SearchFactory<Message, number> {
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(
-    private messageService: MessageService,
+    private messageService: MessageApiService,
   ) {
     this.dataSource = new MatTableDataSource();
   }

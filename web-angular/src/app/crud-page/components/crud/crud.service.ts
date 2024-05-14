@@ -11,13 +11,13 @@ export abstract class CrudAPIService<T> {
    */
   public baseUrl = environment.api;
 
-  private fullUrl: string = '';
+  private _fullUrl: string = '';
 
   constructor(
     @Inject('url') public url: string,
     public http: HttpClient,
   ) {
-    this.fullUrl = this.baseUrl + (this.url.startsWith('/') ? '' : '/') + this.url;
+    this._fullUrl = this.baseUrl + (this.url.startsWith('/') ? '' : '/') + this.url;
   }
 
   /**
@@ -33,7 +33,7 @@ export abstract class CrudAPIService<T> {
    * @param record Registro da inclusão
    */
   public create(record: T): Observable<T> {
-    return this.http.post<T>(`${this.fullUrl}`, record);
+    return this.http.post<T>(`${this._fullUrl}`, record);
   }
 
   /**
@@ -42,7 +42,7 @@ export abstract class CrudAPIService<T> {
    * @param record Registro da atualização
    */
   public update(record: T): Observable<T> {
-    return this.http.put<T>(`${this.fullUrl}`, record);
+    return this.http.put<T>(`${this._fullUrl}`, record);
   }
 
   /**
@@ -50,7 +50,7 @@ export abstract class CrudAPIService<T> {
    * @returns Vetor com todos os registro do objeto
    */
   public findAll(): Observable<T[]> {
-    return this.http.get<T[]>(`${this.fullUrl}`);
+    return this.http.get<T[]>(`${this._fullUrl}`);
   }
 
   /**
@@ -59,7 +59,7 @@ export abstract class CrudAPIService<T> {
    * @param id Identificador do registro
    */
   public findById(id: number): Observable<T> {
-    return this.http.get<T>(`${this.fullUrl}/${id}`);
+    return this.http.get<T>(`${this._fullUrl}/${id}`);
   }
 
   /**
@@ -68,7 +68,11 @@ export abstract class CrudAPIService<T> {
    * @param id Identificador do registro
    */
   public delete(id: number): Observable<boolean> {
-    return this.http.delete<boolean>(`${this.fullUrl}/${id}`);
+    return this.http.delete<boolean>(`${this._fullUrl}/${id}`);
+  }
+
+  public get fullUrl(): string {
+    return this._fullUrl;
   }
 
 }

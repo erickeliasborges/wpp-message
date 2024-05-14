@@ -59,6 +59,10 @@ export class MessageEditionComponent implements FormFactory<Message> {
     return this.form.dirty;
   }
 
+  public get id(): AbstractControl {
+    return this.form.get('id')!;
+  }
+
   public get title(): AbstractControl {
     return this.form.get('title')!;
   }
