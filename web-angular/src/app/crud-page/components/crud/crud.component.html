@@ -1,12 +1,10 @@
-<!-- <app-loading></app-loading> -->
 <div class="container">
+  <div class="content">
+    <ng-content></ng-content>
+  </div>
 
-    <div class="content">
-        <ng-content></ng-content>
-    </div>
-
-    <div class="footer">
-        <ng-content select="app-crud-actions"></ng-content>
-        <ng-content select="app-crud-footer"></ng-content>
-    </div>
+  <div class="footer">
+    <ng-content select="app-crud-actions"></ng-content>
+    <ng-content select="app-crud-footer"></ng-content>
+  </div>
 </div>

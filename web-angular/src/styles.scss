@@ -2,8 +2,15 @@
 
 @import "assets/scss/variables.scss";
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 .full-height {
   height: 100%;
@@ -35,25 +42,27 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 }
 
 .success-snackbar {
-  .mdc-snackbar__surface{
+  .mdc-snackbar__surface {
     background-color: var(--success-color) !important;
-    color: white!important;
+    color: white !important;
   }
-  .mat-mdc-snack-bar-actions{
-    button{
-      color: white!important;
+
+  .mat-mdc-snack-bar-actions {
+    button {
+      color: white !important;
     }
   }
 }
 
 .error-snackbar {
-  .mdc-snackbar__surface{
+  .mdc-snackbar__surface {
     background-color: var(--error-color) !important;
-    color: white!important;
+    color: white !important;
   }
-  .mat-mdc-snack-bar-actions{
-    button{
-      color: white!important;
+
+  .mat-mdc-snack-bar-actions {
+    button {
+      color: white !important;
     }
   }
 }
@@ -65,3 +74,33 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .justify-center {
   justify-content: center;
 }
+
+.flex-1 {
+  flex: 1;
+}
+
+@function calc-col-container($col-width) {
+  @return calc($col-width - 0.5rem);
+}
+.container {
+  margin: 0.5rem;
+}
+.flex-row { display: flex; flex-flow: row wrap; width: 100%; gap: 0.5rem; }
+.flex-row > * {
+  flex: 1; /* allow children to grow when space available */
+
+  /* [OPTIONAL] set a 'min-width' if you want to force some wrapping */
+  min-width: 7.5rem; /* max 3*120px columns on a 360px device */
+}
+.col-1  { flex-basis: calc-col-container(8.33%); }
+.col-2  { flex-basis: calc-col-container(16.66%); }
+.col-3  { flex-basis: calc-col-container(25%); }
+.col-4  { flex-basis: calc-col-container(33.33%); }
+.col-5  { flex-basis: calc-col-container(41.66%); }
+.col-6  { flex-basis: calc-col-container(50%); }
+.col-7  { flex-basis: calc-col-container(58.33%); }
+.col-8  { flex-basis: calc-col-container(66.66%); }
+.col-9  { flex-basis: calc-col-container(75%); }
+.col-10 { flex-basis: calc-col-container(83.33%); }
+.col-11 { flex-basis: calc-col-container(91.66%); }
+.col-12 { flex-basis: calc-col-container(100%); }

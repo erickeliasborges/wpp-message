@@ -3,18 +3,15 @@
     <button (click)="drawer.toggle()" class="menu-btn" mat-icon-button>
       <mat-icon class="no-margin">menu</mat-icon>
     </button>
-    <span class="flex">
+    <span class="flex-1">
       <b class="d-pad mouse-pointer border-r-med logo-navbar" [routerLink]="['/']"><span>Wpp message</span> </b>
     </span>
-    <!-- <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="NewsletterExample icon-button with a menu">
-      <mat-icon class="no-margin">more_vert</mat-icon>
-  </button> -->
-    <mat-menu #menu="matMenu">
-      <!-- <button mat-menu-item (click)="sair()">
-          <mat-icon>close</mat-icon>
-          <span fxFlex>Sair do sistema</span>
-      </button> -->
-    </mat-menu>
+    <button mat-icon-button (click)="onSettingsClick()">
+      <mat-icon class="no-margin">settings</mat-icon>
+    </button>
+    <button mat-icon-button (click)="onLogoutClick()">
+      <mat-icon class="no-margin">logout</mat-icon>
+    </button>
   </mat-toolbar>
 
   <mat-drawer-container #drawerContainer class="main-content">

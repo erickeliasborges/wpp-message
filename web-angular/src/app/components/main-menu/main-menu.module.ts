@@ -5,6 +5,7 @@ import { MainMenuComponent } from './main-menu.component';
 import { MaterialModule } from 'src/app/modules/material/material.module';
 import { RouterModule, Routes } from '@angular/router';
 import { DrawerService } from 'src/app/components/main-menu/services/drawer.service';
+import { SystemConfigurationModule } from 'src/app/pages/system-configuration/system-configuration.module';
 
 const routes: Routes = [
   {
@@ -20,7 +21,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    SystemConfigurationModule,
   ],
   declarations: [MainMenuComponent],
   providers: [

@@ -15,44 +15,39 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatChipsModule } from '@angular/material/chips';
 import { MaterialPaginatorModule } from 'src/app/modules/material/material-paginator.module';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatTooltipModule } from '@angular/material/tooltip';
+
+const PUBLIC = [
+  MatToolbarModule,
+  MatButtonModule,
+  MatIconModule,
+  MatSidenavModule,
+  MatListModule,
+  MatCardModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatSelectModule,
+  MatMenuModule,
+  MatTableModule,
+  MatSnackBarModule,
+  MatAutocompleteModule,
+  MatSlideToggleModule,
+  MatChipsModule,
+  MaterialPaginatorModule,
+  MatDialogModule,
+  MatTabsModule,
+  MatTooltipModule,
+]
 
 @NgModule({
-    imports: [
-        MatToolbarModule,
-        MatButtonModule,
-        MatIconModule,
-        MatSidenavModule,
-        MatListModule,
-        MatCardModule,
-        MatInputModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatMenuModule,
-        MatTableModule,
-        MatSnackBarModule,
-        MatAutocompleteModule,
-        MatSlideToggleModule,
-        MatChipsModule,
-        MaterialPaginatorModule,
-    ],
-    exports: [
-        MatToolbarModule,
-        MatButtonModule,
-        MatIconModule,
-        MatSidenavModule,
-        MatListModule,
-        MatCardModule,
-        MatInputModule,
-        MatFormFieldModule,
-        MatSelectModule,
-        MatMenuModule,
-        MatTableModule,
-        MatSnackBarModule,
-        MatAutocompleteModule,
-        MatSlideToggleModule,
-        MatChipsModule,
-        MaterialPaginatorModule,
-    ],
+  imports: [
+    ...PUBLIC,
+  ],
+  exports: [
+    ...PUBLIC,
+  ],
 })
 export class MaterialModule {
 

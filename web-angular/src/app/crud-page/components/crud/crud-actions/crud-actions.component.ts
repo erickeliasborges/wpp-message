@@ -19,7 +19,6 @@ export class CrudActionsComponent {
   ) {
   }
 
-  // TODO: implementar controller para essas chamadas
   public onSaveClick(): void {
     if (!this.isValidForm()) {
       return;

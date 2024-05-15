@@ -1,0 +1,62 @@
+<!-- Form -->
+<form [formGroup]="form" class="container">
+
+  <div class="flex-row">
+    <!-- Type -->
+    <mat-form-field class="col-3">
+      <mat-label>Tipo</mat-label>
+      <mat-select formControlName="type">
+        <mat-option [value]="'POSTGRESQL'">PostgreSQL</mat-option>
+        <mat-option [value]="'ORACLE'">Oracle</mat-option>
+        <mat-option [value]="'FIREBASE'">Firebase</mat-option>
+      </mat-select>
+      <mat-error>{{form.controls['type'].errors | erro}}</mat-error>
+    </mat-form-field>
+
+    <!-- Host -->
+    <mat-form-field appearance="fill" class="col-6">
+      <mat-label>Endereço</mat-label>
+      <input matInput formControlName="host" placeholder="Informe o endereço (host) do banco de dados..." type="text"
+        required cdkFocusInitial>
+      <mat-error>{{form.controls['host'].errors | erro}}</mat-error>
+    </mat-form-field>
+
+    <!-- Port -->
+    <mat-form-field appearance="fill" class="col-3">
+      <mat-label>Porta</mat-label>
+      <input matInput type="number" formControlName="port" placeholder="Informe a porta do banco de dados... (ex: 5432)"
+        required>
+      <mat-error>{{form.controls['port'].errors | erro}}</mat-error>
+    </mat-form-field>
+  </div>
+
+  <!-- Name -->
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Nome</mat-label>
+    <input matInput formControlName="name" placeholder="Informe o nome do banco de dados..." cdkFocusInitial required>
+    <mat-error>{{form.controls['name'].errors | erro}}</mat-error>
+  </mat-form-field>
+
+  <!-- Username -->
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Usuário</mat-label>
+    <input matInput formControlName="username" placeholder="Informe o usuário do banco de dados..." cdkFocusInitial
+      required>
+    <mat-error>{{form.controls['username'].errors | erro}}</mat-error>
+  </mat-form-field>
+
+  <div class="d-flex flex-1 gap-10">
+    <!-- Password -->
+    <mat-form-field class="password" appearance="fill">
+      <mat-label>Senha</mat-label>
+      <input matInput formControlName="password" placeholder="Informe a senha do banco de dados..." type="password"
+        required>
+      <mat-error>{{form.controls['password'].errors | erro}}</mat-error>
+    </mat-form-field>
+
+    <button mat-icon-button matTooltip="Testar conexão com o banco de dados" (click)="onConnectionTestClick()">
+      <mat-icon class="no-margin">cable</mat-icon>
+    </button>
+  </div>
+
+</form>

@@ -21,9 +21,10 @@ public abstract class GenericOneConfigService<T extends EntityId<ID>, ID, R exte
     public T findOrElseThrowException() {
         Optional<T> entity = findFirst();
         return entity.orElseThrow(() -> new ValidationException(
-                "Nenhuma configuração de %s foi encontrada. " +
-                        "Por favor, registre uma nova configuração para continuar."
-                                .formatted(getConfigName())
+                """
+                Nenhuma configuração de %s foi encontrada.
+                Por favor, registre uma nova configuração para continuar.
+                """.formatted(getConfigName())
         ));
     }
 
@@ -43,9 +44,10 @@ public abstract class GenericOneConfigService<T extends EntityId<ID>, ID, R exte
         List<T> list = findAll();
         if (!list.isEmpty() && !Objects.equals(list.get(0).getId(), entity.getId())) {
             throw new ValidationException(
-                    "Não é possível incluir mais de uma configuração. " +
-                            "Por favor, atualize a existente (id %d)."
-                                    .formatted(list.get(0).getId())
+                    """
+                    Não é possível incluir mais de uma configuração.
+                    Por favor, atualize a existente (id %d).
+                    """.formatted(list.get(0).getId())
             );
         }
     }

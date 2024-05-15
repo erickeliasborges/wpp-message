@@ -48,11 +48,9 @@ export class MessageEditionComponent implements FormFactory<Message> {
   }
 
   validate(): boolean {
-    if (!this.form.valid) {
-      this.form.markAllAsTouched();
-      return false;
-    }
-    return true;
+    this.form.markAllAsTouched();
+    this.form.updateValueAndValidity();
+    return this.form.valid;
   }
 
   isDirty(): boolean {
