@@ -2,7 +2,7 @@ import { CdkTextareaAutosize } from '@angular/cdk/text-field';
 import { Component, NgZone, ViewChild, forwardRef } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { take } from 'rxjs';
-import { CRUD_FORM, FormFactory } from 'src/app/crud-page/interfaces/form-factory';
+import { CRUD_FORM, FormFactory } from 'src/app/core/crud-page/interfaces/form-factory';
 import { Message } from 'src/app/pages/message/models/message';
 
 @Component({
@@ -43,8 +43,7 @@ export class MessageEditionComponent implements FormFactory<Message> {
   }
 
   updateForm(record: Message): void {
-    this.form.reset();
-    this.form.patchValue(record);
+    this.form.reset(record);
   }
 
   validate(): boolean {

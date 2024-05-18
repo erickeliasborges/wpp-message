@@ -1,16 +1,10 @@
-<mat-dialog-content class="configuracao-dialog">
-  <mat-tab-group animationDuration="0ms">
-    <mat-tab label="Sessão">
-      <app-wpp-session-config></app-wpp-session-config>
-    </mat-tab>
+<mat-tab-group class="container" animationDuration="0ms" [selectedIndex]="selectedTabIndex.value"
+  (selectedIndexChange)="selectedTabIndex.setValue($event)">
+  <mat-tab label="Sessão WhatsApp">
+    <app-wpp-session-config></app-wpp-session-config>
+  </mat-tab>
 
-    <mat-tab label="Banco de dados">
-      <app-db-config></app-db-config>
-    </mat-tab>
-  </mat-tab-group>
-</mat-dialog-content>
-
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Fechar</button>
-  <button mat-button (click)="save()" color="primary">Gravar</button>
-</mat-dialog-actions>
+  <mat-tab label="Banco de dados">
+    <app-db-config></app-db-config>
+  </mat-tab>
+</mat-tab-group>

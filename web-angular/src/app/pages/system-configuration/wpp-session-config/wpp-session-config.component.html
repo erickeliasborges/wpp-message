@@ -1,3 +1,20 @@
-<p>
-  TODO
-</p>
+<mat-dialog-content>
+  <div class="d-flex">
+    <span class="status">Status: {{sessionConnected ? 'Conectado' : 'Não conectado, por favor inicie a sessão'}}.</span>
+    <button mat-icon-button (click)="onRefreshStatusClick()" matTooltip="Atualizar status da sessão">
+      <mat-icon class="no-margin">refresh</mat-icon>
+    </button>
+  </div>
+  <div *ngIf="(qrcode != '') && !sessionConnected" class="qrcode">
+    <img [src]="qrcode" alt="">
+    <span>Scaneie o QR Code no seu WhatsApp e após concluir clique no ícone para atualizar o status.</span>
+  </div>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="startSession()" [disabled]="sessionConnected">
+    {{((sessionConnected || qrcode == '') ? 'Iniciar' : 'Atualizar QR Code')}}
+  </button>
+  <button mat-button (click)="logoutSession()" [disabled]="!sessionConnected">Desconectar</button>
+  <button mat-button mat-dialog-close>Fechar</button>
+</mat-dialog-actions>

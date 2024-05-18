@@ -2,8 +2,8 @@ import { DbConfig } from './models/db-config';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { CrudAPIService } from 'src/app/crud-page/components/crud/crud.service';
-import { GenericResponse } from 'src/app/responses/generic-response';
+import { CrudAPIService } from 'src/app/core/crud-page/components/crud/crud.service';
+import { GenericResponse } from 'src/app/core/responses/generic-response';
 
 @Injectable()
 export class DbConfigService extends CrudAPIService<DbConfig> {

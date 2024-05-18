@@ -2,9 +2,9 @@ import { Component, EventEmitter, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { SearchFactory } from 'src/app/crud-page/interfaces/crud-pesquisa';
+import { SearchFactory } from 'src/app/core/crud-page/interfaces/crud-pesquisa';
 import { Message } from 'src/app/pages/message/models/message';
-import { GENERIC_SEARCH } from '../../../crud-page/interfaces/crud-pesquisa';
+import { GENERIC_SEARCH } from '../../../core/crud-page/interfaces/crud-pesquisa';
 import { MessageApiService } from 'src/app/pages/message/message-api.service';
 
 @Component({

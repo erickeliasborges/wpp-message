@@ -1,10 +1,12 @@
 import { Dialog } from '@angular/cdk/dialog';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ValueLabel } from 'src/app/core/models/value-label';
 import { DbConfigService } from 'src/app/pages/system-configuration/db-config/db-config.service';
+import { getDbConfigTypeLabelsValues } from 'src/app/pages/system-configuration/db-config/enums/db-config-type';
 import { DbConfig } from 'src/app/pages/system-configuration/db-config/models/db-config';
-import { LoadingService } from 'src/app/services/loading.service';
-import { MessageService } from 'src/app/services/message.service';
+import { MessageService } from 'src/app/common/services/message.service';
+import { LoadingService } from 'src/app/common/components/loading-indicator/loading.service';
 
 @Component({
   selector: 'app-db-config',
@@ -14,6 +16,7 @@ import { MessageService } from 'src/app/services/message.service';
 export class DbConfigComponent {
 
   public form!: FormGroup;
+  public dbConfigTypes: ValueLabel[] = getDbConfigTypeLabelsValues();
 
   constructor(
     public formBuilder: FormBuilder,
@@ -71,11 +74,7 @@ export class DbConfigComponent {
   }
 
   private updateForm(value: DbConfig): void {
-    if (value) {
-      this.form.reset(value);
-    } else {
-      this.form.reset();
-    }
+    this.form.reset(value);
   }
 
   public onConnectionTestClick(): void {

@@ -7,13 +7,24 @@ import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.ext.ExceptionMapper;
 import jakarta.ws.rs.ext.Provider;
 
+import java.util.Objects;
+
 @Provider
 public class WebApplicationExceptionHandler implements ExceptionMapper<WebApplicationException> {
 
     @Override
     @Produces(MediaType.APPLICATION_JSON)
     public Response toResponse(WebApplicationException e) {
-        return e.getResponse();
+        Response exceptionResponse = e.getResponse();
+        if (exceptionResponse.hasEntity() && Objects.isNull(exceptionResponse.getEntity())) {
+            String exceptionEntity = exceptionResponse.readEntity(String.class);
+            return Response
+                    .status(exceptionResponse.getStatus())
+                    .entity(exceptionEntity)
+                    .type(exceptionResponse.getMediaType())
+                    .build();
+        }
+        return exceptionResponse;
     }
 
 }

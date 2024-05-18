@@ -4,10 +4,10 @@ import { MessagePage } from './message.page';
 import { MessageSearchComponent } from 'src/app/pages/message/message-search/message-search.component';
 import { MessageEditionComponent } from 'src/app/pages/message/message-edition/message-edition.component';
 import { RouterModule, Routes } from '@angular/router';
-import { MaterialModule } from 'src/app/modules/material/material.module';
-import { CrudPageModule } from 'src/app/crud-page/crud-page.module';
+import { CrudPageModule } from 'src/app/core/crud-page/crud-page.module';
 import { MessageApiService } from 'src/app/pages/message/message-api.service';
-import { GenericDirectivesModule } from 'src/app/generic-directives/generic-directives.module';
+import { GenericDirectivesModule } from 'src/app/common/generic-directives/generic-directives.module';
+import { MaterialModule } from 'src/app/core/modules/material/material.module';
 
 const routes: Routes = [
   { path: '', redirectTo: 'search', pathMatch: 'full' },

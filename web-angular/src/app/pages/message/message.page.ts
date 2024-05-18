@@ -1,9 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
-import { provideCrud } from 'src/app/crud-page/components/crud/core/provide-crud';
+import { provideCrud } from 'src/app/core/crud-page/components/crud/core/provide-crud';
 import { MessageApiService } from 'src/app/pages/message/message-api.service';
-import { MessageService } from 'src/app/services/message.service';
-import { CrudComponent } from 'src/app/crud-page/components/crud/crud.component';
-import { LoadingService } from 'src/app/services/loading.service';
+import { MessageService } from 'src/app/common/services/message.service';
+import { CrudComponent } from 'src/app/core/crud-page/components/crud/crud.component';
+import { LoadingService } from 'src/app/common/components/loading-indicator/loading.service';
 
 @Component({
   selector: 'app-message',

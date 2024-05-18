@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DbConfigComponent } from 'src/app/pages/system-configuration/db-config/db-config.component';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-system-configuration',
@@ -8,15 +8,11 @@ import { DbConfigComponent } from 'src/app/pages/system-configuration/db-config/
 })
 export class SystemConfigurationPage implements OnInit {
 
-  @ViewChild(DbConfigComponent) dbConfigComponent!: DbConfigComponent;
+  selectedTabIndex = new FormControl(0);
 
   constructor() { }
 
   ngOnInit() {
-  }
-
-  public save(): void {
-    this.dbConfigComponent.save();
   }
 
 }
