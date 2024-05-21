@@ -91,6 +91,12 @@
             <groupId>io.quarkus</groupId>
             <artifactId>quarkus-rest-client-jackson</artifactId>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.firebirdsql.jdbc/jaybird -->
+        <dependency>
+            <groupId>org.firebirdsql.jdbc</groupId>
+            <artifactId>jaybird</artifactId>
+            <version>5.0.4.java11</version>
+        </dependency>
     </dependencies>
 
     <build>

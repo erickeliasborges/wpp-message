@@ -19,6 +19,9 @@ public class DbConnectionBuilder {
             case POSTGRESQL -> {
                 return new DbConnectionPostgresql();
             }
+            case FIREBASE -> {
+                return new DbConnectionFirebird();
+            }
             default -> {
                 throw new RuntimeException("Tipo do banco de dados não encontrado, as opções são (POSTGRESQL, ORACLE, FIREBASE).");
             }

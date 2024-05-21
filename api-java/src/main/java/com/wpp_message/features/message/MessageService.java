@@ -13,6 +13,7 @@ import lombok.SneakyThrows;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.regex.Pattern;
 
 @RequestScoped
 public class MessageService extends GenericService<Message, Long, MessageRepository> {
@@ -53,8 +54,12 @@ public class MessageService extends GenericService<Message, Long, MessageReposit
 
     private String replaceMessageWithResultSetColumnValues(String message, ResultSet resultSet) throws SQLException {
         String messageToReplace = message;
+        String regexToReplace = Pattern.quote("${") + "%s}";
         for (int i = 1; i <= resultSet.getMetaData().getColumnCount(); i++) {
-            messageToReplace = messageToReplace.replace("${" + resultSet.getMetaData().getColumnName(i) + "}", resultSet.getString(i));
+            messageToReplace = Pattern
+                    .compile(regexToReplace.formatted(resultSet.getMetaData().getColumnLabel(i)), Pattern.CASE_INSENSITIVE)
+                    .matcher(messageToReplace)
+                    .replaceAll(resultSet.getString(i));
         }
         return messageToReplace;
     }

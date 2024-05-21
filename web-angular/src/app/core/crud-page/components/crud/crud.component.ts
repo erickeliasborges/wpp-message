@@ -7,6 +7,7 @@ import { EntityId } from 'src/app/core/crud-page/interfaces/entity-id';
 import { CRUD_FORM, FormFactory } from 'src/app/core/crud-page/interfaces/form-factory';
 import { MessageService, OptionsMessage } from 'src/app/common/services/message.service';
 import { LoadingService } from 'src/app/common/components/loading-indicator/loading.service';
+import { CrudController } from 'src/app/core/crud-page/components/crud/crud.controller';
 
 @Component({
   selector: 'app-crud',
@@ -28,7 +29,10 @@ export class CrudComponent implements CrudFactory<any> {
     private apiService: CrudAPIService<any>,
     private messageService: MessageService,
     private loadingService: LoadingService,
-  ) { }
+    private crudController: CrudController,
+  ) {
+    this.crudController.registerContext(this);
+  }
 
   public set showMessages(value: boolean) {
     this._showMessages = value;
