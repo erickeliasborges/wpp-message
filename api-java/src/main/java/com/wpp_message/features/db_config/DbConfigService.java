@@ -1,7 +1,7 @@
 package com.wpp_message.features.db_config;
 
 import com.wpp_message.features.db_config.connection.DbConnection;
-import com.wpp_message.features.db_config.connection.DbConnectionBuilder;
+import com.wpp_message.features.db_config.connection.DbConnectionFactory;
 import com.wpp_message.generic.crud.GenericOneConfigService;
 import jakarta.enterprise.context.RequestScoped;
 
@@ -19,7 +19,7 @@ public class DbConfigService extends GenericOneConfigService<DbConfig, Long, DbC
     }
 
     public boolean isConnectionTestOk(DbConfig dbConfig) throws SQLException {
-        DbConnection dbConnection = DbConnectionBuilder.type(dbConfig.getType()).build();
+        DbConnection dbConnection = DbConnectionFactory.create(dbConfig.getType());
         Optional<Connection> optionalConnection = dbConnection.connect(dbConfig);
         if (optionalConnection.isPresent()) {
             optionalConnection.get().close();

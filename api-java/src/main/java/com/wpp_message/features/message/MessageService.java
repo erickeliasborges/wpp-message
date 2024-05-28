@@ -3,7 +3,7 @@ package com.wpp_message.features.message;
 import com.wpp_message.exception.validation.ValidationException;
 import com.wpp_message.features.db_config.DbConfig;
 import com.wpp_message.features.db_config.DbConfigService;
-import com.wpp_message.features.db_config.connection.DbConnectionBuilder;
+import com.wpp_message.features.db_config.connection.DbConnectionFactory;
 import com.wpp_message.features.wpp.WppMessageService;
 import com.wpp_message.generic.crud.GenericService;
 import com.wpp_message.utils.ResultSetUtils;
@@ -32,9 +32,8 @@ public class MessageService extends GenericService<Message, Long, MessageReposit
     @SneakyThrows
     public void sendByWpp(Long id) {
         DbConfig dbConfig = dbConfigService.findOrElseThrowException();
-        Connection connection = DbConnectionBuilder
-                .type(dbConfig.getType())
-                .build()
+        Connection connection = DbConnectionFactory
+                .create(dbConfig.getType())
                 .connectOrElseThrowException(dbConfig);
         Message message = findById(id);
         ResultSet resultSet = connection.createStatement().executeQuery(message.getSql());
